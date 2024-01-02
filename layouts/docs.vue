@@ -1,9 +1,10 @@
 <template>
-  <Head>
-    <title>Documentation - Design System</title>
-    <meta name="description" content="Documentation du Design System" />
+    <Head>
+    <Title>Papichulobeats | 🔥 Banger beats 🔥</Title>
+    <Meta name="description" content="papichulobeats" />
   </Head>
   <LayoutsDocs>
     <slot />
   </LayoutsDocs>
+  
 </template>

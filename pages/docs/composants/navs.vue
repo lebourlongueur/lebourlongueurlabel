@@ -19,9 +19,7 @@ definePageMeta({
 
     <div class="ring-2 ring-gray-200/75 my-8">
       <NavsNav>
-        <template #logo>
-          <TitresLogo>Logo</TitresLogo>
-        </template>
+        
 
         <template #links>
           <LinksNavLink to="#">Accueil</LinksNavLink>

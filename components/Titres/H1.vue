@@ -1,6 +1,6 @@
 <template>
   <h1
-    class="text-4xl font-bold text-gray-100 font-serif mb-5 pb-3 pt-10 block border-b"
+    class="tracking-wide mt-2 mb-6 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl"
   >
     <slot />
   </h1>
