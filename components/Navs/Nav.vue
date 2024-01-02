@@ -3,8 +3,8 @@ const isOpen = ref(false);
 </script>
 
 <template>
-  <nav class="fixed top-0 w-full bg-white border-gray-200 dark:bg-gray-900 z-10 px-10">
-    <div class="flex items-center justify-between flex-wrap dark:bg-gray-900 h-20 px-4">
+  <nav class="fixed top-0 w-full bg-white border-gray-200 dark:bg-transparent z-10 px-10">
+    <div class="flex items-center justify-between flex-wrap h-20 px-4">
       <div>
         <nuxt-link to="/">
           <slot name="logo"> </slot>
@@ -24,22 +24,24 @@ const isOpen = ref(false);
         </ul>
       </div>
     </div>
-
-    <transition name="slide-background">
-      <ul v-show="isOpen" class="md:hidden flex flex-col space-y-2 px-4 py-8 bg-gray-900">
+<div class="overflow-clip">
+    <transition name="slide-background" >
+      <ul v-show="isOpen" class="md:hidden flex flex-col space-y-2 px-4 py-8 bg-gray-200 rounded-lg">
         <slot name="links"></slot>
       </ul>
     </transition>
+  </div>
   </nav>
 </template>
 
 <style scoped>
 .slide-background-enter-active, .slide-background-leave-active {
-  transition: all 0.5s ease-in-out;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+
 }
 .slide-background-enter, .slide-background-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
-  background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and opacity as needed */
+  opacity: 1;
+  transform: translateY(-100%);
 }
 </style>

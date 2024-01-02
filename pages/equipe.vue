@@ -1,34 +1,56 @@
+<script setup>
+const query = gql`
+  query Artistes {
+    artistes(orderBy: id_ASC) {
+      createdAt
+    description
+    id
+    nom
+    publishedAt
+    slug
+    updatedAt
+    image{
+      id
+      url(
+        transformation: {document: {output: {format: webp}}, image: {resize: {fit: crop, height: 1024, width: 1024}}}
+      )
+    }
+    }
+  }
+`;
+
+
+const artistes = ref();
+const { data } = await useAsyncQuery(query);
+console.log(data.value);
+artistes.value = data.value.artistes;
+</script>
+
 <template>
-    <Container>
-        <ListsGrid>
+  <Container>
+    <TitresH2>
+      <i class="ri-magic-fill"></i> Nos artistes
+    </TitresH2>
+    <ul v-if="artistes" class="flex justify-between gap-4 w-full">
+      <li v-for="artiste in artistes" :key="artiste.id" class="w-full ">
+        <NuxtLink :to="`/artiste/${artiste.slug}`">
 
-            <li>
-                <CardsEquipeCard>
-                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Bonnie image" />
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Mixer engineer</span>
-                    
-                </CardsEquipeCard>
-            </li>
-            <li>
-                <CardsEquipeCard>
-                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
-                            alt="michele image" />
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Michele Joseph</h5>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Producter</span>
-                    
-                </CardsEquipeCard>
-            </li>
-            <li>
-                <CardsEquipeCard>
-                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=1923&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="michele image" />
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Fred Staff</h5>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Video Maker</span>
-                    
-                </CardsEquipeCard>
-            </li>
+          <CardsEquipeCard>
+              <NuxtImg class="w-54 h-54 mb-3 rounded-lg shadow-lg object-cover" :src="artiste.image.url"
+                :alt="artiste.nom" />
+              <h5 class="mb-1 text-2xl font-semibold text-gray-900 dark:text-white text-center">{{ artiste.nom }}</h5>
+              <span class="text-sm font-light text-white opacity-50 text-center">{{ artiste.description }}</span>
+              <div class="mt-4 opacity-50">Plus de détail <i class="ri-arrow-right-line"></i></div>
+          </CardsEquipeCard>
+        </NuxtLink>
 
-    </ListsGrid>
-</Container></template>
+      </li>
+
+    </ul>
+
+    <ul v-else>
+      <li>Loading...</li>
+    </ul>
+
+  </Container>
+</template>

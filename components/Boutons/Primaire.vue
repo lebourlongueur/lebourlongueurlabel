@@ -1,11 +1,31 @@
 
+<style>
+
+  .background-animate {
+    background-size: 400%;
+
+    -webkit-animation: AnimationName 3s ease infinite;
+    -moz-animation: AnimationName 3s ease infinite;
+    animation: AnimationName 3s ease infinite;
+  }
+
+  @keyframes AnimationName {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
+
 <template>
-  <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  <button type="button" class="font-sans text-black bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-8 py-5 text-center inline-flex items-center  dark:focus:ring-amber-800 
+  hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 background-animate hover:text-white transition ease-in-out">
+    
 
     <slot />
-  <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-</svg>
-</button>
-
+    
+  </button>
 </template>

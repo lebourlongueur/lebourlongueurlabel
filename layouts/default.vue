@@ -1,20 +1,23 @@
 <template>
   <Head>
-    <Title>Papichulobeats | 🔥 Banger beats 🔥</Title>
+    <Title>Label Bourlongueur | Music to the next Level</Title>
     <Meta name="description" content="papichulobeats" />
   </Head>
   <LayoutsBase>
     <template #navigation>
       <NavsNav>
         <template #logo>
-          <TitresLogo><img src="../public/img/logo-pb-2.svg" width="28" height="auto"></TitresLogo>
+          <TitresLogo><img src="../public/img/logo-lebourlongueur.svg" width="50" height="auto"> </TitresLogo>
         </template>
 
         <template #links>
           <LinksNavLink to="/">Accueil</LinksNavLink>
-          <LinksNavLink to="/work">Work</LinksNavLink>
+          <LinksNavLink to="/services">Services</LinksNavLink>
+          <LinksNavLink to="/societe">Société</LinksNavLink>
           <LinksNavLink to="/equipe">Équipe</LinksNavLink>
+          <LinksNavLink to="/blogactualite">Blog</LinksNavLink>
           <LinksNavLink to="/contact">Contact</LinksNavLink>
+
         </template>
       </NavsNav>
     </template>
