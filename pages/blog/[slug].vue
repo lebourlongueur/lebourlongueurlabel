@@ -59,6 +59,35 @@ blog.value = data.value.blog;
 </style>
 
 <template>
+    <Head v-if="blog">
+    <Title>{{ blog.titre }} </Title>
+    <Meta
+      name="description"
+      :content="`${blog.titre}`"
+    />
+    <Meta
+      property="og:title"
+      :content="`${blog.titre}`"
+    />
+    <Meta
+      property="og:description"
+      :content="`${blog.titre}`"
+    />
+    <Meta property="og:image" :content="blog.image.url" />
+    <Meta property="og:type" content="website" />
+    <Meta property="og:locale" content="fr_FR" />
+    <Meta name="twitter:card" content="summary_large_image" />
+    <Meta
+      name="twitter:title"
+      :content="`${blog.titre}`"
+    />
+    <Meta
+      name="twitter:description"
+      :content="`${blog.titre}`"
+    />
+    <Meta name="twitter:image" :content="blog.image.url" />
+  </Head>
+
   <Containerarticle>
     <a href="javascript:history.back()" class="text-slate-500 hover:text-white transition ease-in">
       <i class="ri-arrow-left-line"></i> Retour aux articles

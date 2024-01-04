@@ -35,6 +35,34 @@ artiste.value = data.value.artiste;
 
 
 <template>
+  <Head v-if="artiste">
+    <Title>{{ artiste.nom }} | Label Bourlongueur</Title>
+    <Meta
+      name="description"
+      :content="`Découvrez le Hit de ${artiste.nom}: ${artiste.description}`"
+    />
+    <Meta
+      property="og:title"
+      :content="`${artiste.nom} | Label Bourlongueur`"
+    />
+    <Meta
+      property="og:description"
+      :content="`Découvrez le Hit de ${artiste.nom}: ${artiste.description}`"
+    />
+    <Meta property="og:image" :content="artiste.image.url" />
+    <Meta property="og:type" content="website" />
+    <Meta property="og:locale" content="fr_FR" />
+    <Meta name="twitter:card" content="summary_large_image" />
+    <Meta
+      name="twitter:title"
+      :content="`${artiste.nom} | Label Bourlongueur`"
+    />
+    <Meta
+      name="twitter:description"
+      :content="`Découvrez le Hit de ${artiste.nom}: ${artiste.description}`"
+    />
+    <Meta name="twitter:image" :content="artiste.image.url" />
+  </Head>
 <Container>
   <a href="javascript:history.back()" class="text-slate-500 hover:text-white transition ease-in">
       <i class="ri-arrow-left-line"></i> Retour aux artistes
